@@ -244,8 +244,8 @@ jobs:
               echo TYPEORM_DATABASE=$TYPEORM_DATABASE >> .env
             npm install
             npm run migrations > migrations_dump.txt
+            echo "migrations_dump.txt"
             cat migrations_dump.txt
-            cat .env
       - run:
           name: Send migration results to KVDB
           command: |
