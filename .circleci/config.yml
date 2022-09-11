@@ -17,6 +17,7 @@ commands:
       - run:
           name: Install Ansible
           command: |
+            python3 -m pip install --user ansible
             sudo apt update
             sudo apt install software-properties-common -y
             sudo add-apt-repository --yes --update ppa:ansible/ansible
@@ -62,6 +63,7 @@ commands:
           name: Revert migrations
           when: on_fail
           command: |
+
             SUCCESS=$(curl --insecure https://kvdb.io/${KVDB_BUCKET}/migration_<< parameters.Workflow_ID >>)
 
             if [[ $SUCCESS == 1 ]]
@@ -69,6 +71,8 @@ commands:
               cd ~/project/backend
               npm install
               npm run migration:revert
+            else
+              echo "failed to revert migration"
             fi
             
 jobs:
@@ -167,7 +171,7 @@ jobs:
 
   deploy-infrastructure:
     docker:
-      - image: cimg/base:stable 
+      - image: cimg/python:3.10
     steps:
       - checkout
       - install_awscli
@@ -205,7 +209,7 @@ jobs:
 
   configure-infrastructure:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/python:3.10
     steps:
       - checkout
       - install_ansible
