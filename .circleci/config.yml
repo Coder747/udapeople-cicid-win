@@ -226,7 +226,7 @@ jobs:
             then
               curl https://kvdb.io/${KVDB_BUCKET}/migrations_${CIRCLE_WORKFLLOW_ID:0:7} -d '1'
             fi
-      - destroy_environment
+      - destroy-environment
       - revert-migrations
      # Here's where you will add some code to rollback on failure      
 
