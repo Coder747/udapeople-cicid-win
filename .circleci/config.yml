@@ -17,7 +17,6 @@ commands:
       - run:
           name: Install Ansible
           command: |
-            python3 -m pip install --user ansible
             sudo apt update
             sudo apt install software-properties-common -y
             sudo add-apt-repository --yes --update ppa:ansible/ansible
@@ -171,7 +170,7 @@ jobs:
 
   deploy-infrastructure:
     docker:
-      - image: cimg/python:3.10
+      - image: cimg/base:stable
     steps:
       - checkout
       - install_awscli
@@ -209,7 +208,7 @@ jobs:
 
   configure-infrastructure:
     docker:
-      - image: cimg/python:3.10
+      - image: cimg/base:stable
     steps:
       - checkout
       - install_ansible
@@ -228,10 +227,11 @@ jobs:
 
   run-migrations:
     docker:
-      - image: cimg/node:13.8.0
+      - image: cimg/base:stable
     steps:
       - checkout
       - install_awscli
+      - install_nodejs
       - run:
           name: Run migrations
           command: |
@@ -306,7 +306,7 @@ jobs:
       - install_ansible
       - install_nodejs
       - add_ssh_keys:
-          fingerprints: [""]
+          fingerprints: ["1d:73:41:85:77:49:b7:ea:81:6f:be:4b:16:54:4d:cc"]
       - attach_workspace:
           at: ~/
       - restore_cache:
