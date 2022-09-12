@@ -331,6 +331,11 @@ jobs:
             export TYPEORM_MIGRATIONS_DIR=./migrations
             export TYPEORM_ENTITIES=./modules/domain/**/*.entity{.ts,.js}
             export TYPEORM_MIGRATIONS=./migrations/*ts
+            export TYPEORM_HOST=$TYPEORM_HOST
+            export TYPEORM_PORT=$TYPEORM_PORT
+            export TYPEORM_USERNAME=$TYPEORM_USERNAME
+            export TYPEORM_PASSWORD=$TYPEORM_PASSWORD
+            export TYPEORM_DATABASE=$TYPEORM_DATABASE
 
             cd .circleci/ansible
             cat inventory.txt
