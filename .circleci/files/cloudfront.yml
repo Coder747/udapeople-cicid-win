@@ -18,9 +18,9 @@ Resources:
   WebpageCDN:
     Type: AWS::CloudFront::Distribution
     Properties:
-      DistributionConfig:
-        Origins:
-          - DomainName: !Sub "udapeople-${WorkflowID}.s3.amazonaws.com"
+    DistributionConfig:
+      Origins:
+        - DomainName: !Sub "udapeople-${WorkflowID}.s3.amazonaws.com"   
             Id: webpage
             S3OriginConfig:
               OriginAccessIdentity: !Sub "origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}"
