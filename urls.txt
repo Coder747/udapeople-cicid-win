@@ -1,0 +1,5 @@
+[URL01] https://github.com/Coder747/udapeople-cicid-win
+[URL02] http://udapeople-72bd7c0.s3.amazonaws.com/
+[URL03] http://d1taq0wchm84jk.cloudfront.net
+[URL04] http://34.201.60.226:3030/api/status
+[URL05] http://44.203.86.232:9090
